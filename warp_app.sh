@@ -101,5 +101,5 @@ else
 fi
 
 python replace_ip.py result.csv /sdcard/Download/Telegram/
-zip -rv /sdcard/Download/Telegram.zip /sdcard/Download/Telegram/
-echo "please open wireguard app and select Telegram.zip from /sdcard/Download/"
+cd /sdcard/Download/Telegram && zip -rv Telegram.zip .
+echo "please open wireguard app and select Telegram.zip from /sdcard/Download/Telegram/"
