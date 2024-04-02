@@ -12,6 +12,13 @@ else
     echo "skip upgrade pkg and install wget python3 zip"
 fi
 
+if [ ! -f ~/replace_ip.py ]; then
+        echo "replace_ip.py not found,start download..."
+        wget "https://github.com/xlzhen-940218/TermuxWARPShell/raw/main/replace_ip.py" -O ~/replace_ip.py
+else
+        echo "replace_ip.py downloaded."
+fi
+
 minimum_size=8660
 actual_size=$(du -k "wireguard.apk" | cut -f 1)
 if [ "$actual_size" -ge $minimum_size ]; then
