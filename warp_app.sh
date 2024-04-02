@@ -18,8 +18,11 @@ if [ ! -f ~/replace_ip.py ]; then
 else
         echo "replace_ip.py downloaded."
 fi
-
-printf "please open developer mode and enable wifi usb debug,and input adb wifi port: "
+printf "please open developer mode and enable wifi usb debug"
+printf "please input adb wifi pair port: "
+read -r answer_port
+adb pair localhost:"$answer_port"
+printf "input adb wifi port: "
 read -r answer_port
 adb connect localhost:"$answer_port"
 
