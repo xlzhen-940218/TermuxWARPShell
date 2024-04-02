@@ -1,15 +1,15 @@
 #!/bin/bash
 cd "$OLDPWD" && pwd
 
-printf 'init termux env and install wget python3 zip ? (y/n)? '
+printf 'init termux env and install wget python3 zip android-tools? (y/n)? '
 read -r answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
-    echo "start upgrade pkg and install wget python3 zip"
+    echo "start upgrade pkg and install wget python3 zip android-tools"
     pkg upgrade -y;
     pkg install wget python3 zip -y;
 else
-    echo "skip upgrade pkg and install wget python3 zip"
+    echo "skip upgrade pkg and install wget python3 zip android-tools"
 fi
 
 if [ ! -f ~/replace_ip.py ]; then
@@ -18,6 +18,10 @@ if [ ! -f ~/replace_ip.py ]; then
 else
         echo "replace_ip.py downloaded."
 fi
+
+printf "please input adb wifi port"
+read -r answer_port
+adb connect localhost:"$answer_port"
 
 minimum_size=8660
 actual_size=$(du -k "wireguard.apk" | cut -f 1)
@@ -43,6 +47,8 @@ read -r answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     echo "install wireguard app"
     termux-open /storage/emulated/0/wireguard.apk
+    adb install wireguard.apk
+    adb shell monkey -p 'com.wireguard.android' -v 1
 else
     echo "skip install wireguard app"
 fi
@@ -71,6 +77,8 @@ read -r answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     echo "install telegram app"
     termux-open /storage/emulated/0/telegram.apk
+    adb install telegram.apk
+    adb shell monkey -p 'org.telegram.messenger.web' -v 1
 else
     echo "skip install telegram app"
 fi
