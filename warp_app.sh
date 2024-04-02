@@ -7,7 +7,7 @@ read -r answer
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     echo "start upgrade pkg and install wget python3 zip android-tools"
     pkg upgrade -y;
-    pkg install wget python3 zip -y;
+    pkg install wget python3 zip android-tools -y;
 else
     echo "skip upgrade pkg and install wget python3 zip android-tools"
 fi
