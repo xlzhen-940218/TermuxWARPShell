@@ -19,7 +19,7 @@ else
         echo "replace_ip.py downloaded."
 fi
 
-printf "please input adb wifi port"
+printf "please open developer mode and enable wifi usb debug,and input adb wifi port: "
 read -r answer_port
 adb connect localhost:"$answer_port"
 
