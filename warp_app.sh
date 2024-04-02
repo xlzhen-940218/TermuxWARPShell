@@ -35,14 +35,14 @@ else
         echo "wireguard apk downloaded,open there"
 fi
 
-cp ~/wireguard.apk /sdcard/Download/wireguard.apk
+cp ~/wireguard.apk /storage/emulated/0/wireguard.apk
 
 printf 'install wireguard app? (y/n)? '
 read -r answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     echo "install wireguard app"
-    termux-open /sdcard/Download/wireguard.apk
+    termux-open /storage/emulated/0/wireguard.apk
 else
     echo "skip install wireguard app"
 fi
@@ -63,14 +63,14 @@ else
 	echo "telegram apk downloaded,open there"
 fi
 
-cp ~/telegram.apk /sdcard/Download/telegram.apk
+cp ~/telegram.apk /storage/emulated/0/telegram.apk
 
 printf 'install telegram app? (y/n)? '
 read -r answer
 
 if [ "$answer" != "${answer#[Yy]}" ] ;then
     echo "install telegram app"
-    termux-open /sdcard/Download/telegram.apk
+    termux-open /storage/emulated/0/telegram.apk
 else
     echo "skip install telegram app"
 fi
@@ -86,7 +86,7 @@ else
 fi
 
 echo "check warp account"
-if [ -f /sdcard/Download/Telegram/wg-config.conf ]; then
+if [ -f /storage/emulated/0/Telegram/wg-config.conf ]; then
 	echo "have account,ready replace the ip"
 else
 	echo "not have account,please follow warp+bot link"
@@ -100,6 +100,6 @@ else
 	echo 'skip warp ip 优选.'
 fi
 
-python replace_ip.py result.csv /sdcard/Download/Telegram/
-cd /sdcard/Download/Telegram && zip -rv Telegram.zip .
-echo "please open wireguard app and select Telegram.zip from /sdcard/Download/Telegram/"
+python replace_ip.py result.csv /storage/emulated/0/Telegram/
+cd /storage/emulated/0/Telegram && zip -rv Telegram.zip .
+echo "please open wireguard app and select Telegram.zip from /storage/emulated/0/Telegram/"
